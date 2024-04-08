@@ -1,21 +1,18 @@
 #!/usr/bin/python3
-'''Define a rectangle class'''
+'''Define a rectangle class.'''
 
 
 class Rectangle:
-    '''The rectangle class to define width and height
-    Args:
-        self.width(...): to store the width.
-        self.height(...): to print the height
+    '''The class to return width and height of rectangle
     Raise:
         TypeError: if width and height is not integer.
         ValueError: if width and height is less than 0.
-    Return: dict value
+    Return:
+        The rectangle area and primeter
     '''
-
     def __init__(self, width=0, height=0):
-        self.width = width
-        self.height = height
+        self.__width = width
+        self.__height = height
 
     @property
     def width(self):
@@ -23,7 +20,7 @@ class Rectangle:
 
     @width.setter
     def width(self, value):
-        if not isinstance(value,  int):
+        if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value < 0:
             raise ValueError("width must be >= 0")
@@ -39,4 +36,13 @@ class Rectangle:
             raise TypeError("height must be an integer")
         if value < 0:
             raise ValueError("height must be >= 0")
-        self.__height = value
+        self.__heigth = value
+
+    def area(self):
+        return self.__width * self.__height
+
+    def perimeter(self):
+        if self.__width and self.__height == 0:
+            return (0)
+        else:
+            return 2 * (self.__width + self.__height)
